@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./master.css">
   </head>
   <body>
+    <div class="start">START</div>
     <div class="board">
       <div class="row">
         <div class="top-left tile"></div>
@@ -28,8 +29,11 @@
   </body>
 
   <script type="text/javascript">
-    let currentPlayer = true;
     let board = document.getElementsByClassName('board');
+    let row = document.getElementsByClassName('row');
+    let tiles = document.getElementsByClassName('tile');
+    let start = document.getElementsByClassName('start');
+    let currentPlayer = true;
     let counter = 0;
 
     board[0].addEventListener('click', e => {
@@ -37,7 +41,34 @@
         let tile = e.target;
         e.target.innerHTML = currentPlayer ? "O" : "X";
         currentPlayer = !currentPlayer;
+        counter += 1
+        if (counter == 9) {
+          setTimeout(function() {
+            let array = Array.from(tiles);
+            for (let i = 0; i < array.length; i++)
+            {
+              array[i].innerHTML = "";
+            }
+          }, 2000);
+        }
       }
     })
+
+    start[0].addEventListener('click', e => {
+      board[0].style.display = "flex";
+      start[0].style.display = "none";
+    })
+
+    // function checkWinner() {
+    //   let array =
+    // }
+
+    // function checkRow(row) {
+    //   let element = row[0].childNode[1].innerHTML;
+    //   for (let i = 1; i < row[0].childNode.innerHTML; i += 2)
+    //   {
+    //     if ()
+    //   }
+    // }
   </script>
 </html>
