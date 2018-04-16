@@ -3,22 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="./master.css">
   </head>
   <body>
     <div class="board">
-      <div class="top-left tile"></div>
-      <div class="top-center tile"></div>
-      <div class="top-right tile"></div>
+      <div class="row">
+        <div class="top-left tile"></div>
+        <div class="top-center tile"></div>
+        <div class="top-right tile"></div>
+      </div>
 
-      <div class="center-left tile"></div>
-      <div class="center-center tile"></div>
-      <div class="center-right tile"></div>
+      <div class="row">
+        <div class="center-left tile"></div>
+        <div class="center-center tile"></div>
+        <div class="center-right tile"></div>
+      </div>
 
-      <div class="bottom-left tile"></div>
-      <div class="bottom-center tile"></div>
-      <div class="bottom-right tile"></div>
+      <div class="row">
+        <div class="bottom-left tile"></div>
+        <div class="bottom-center tile"></div>
+        <div class="bottom-right tile"></div>
+      </div>
     </div>
   </body>
 
-  <script type="text/javascript" src="ttt.js"></script>
+  <script type="text/javascript">
+    let currentPlayer = true;
+    let board = document.getElementsByClassName('board');
+    let counter = 0;
+
+    board[0].addEventListener('click', e => {
+      if (e.target.classList.contains('tile')) {
+        let tile = e.target;
+        e.target.innerHTML = currentPlayer ? "O" : "X";
+        currentPlayer = !currentPlayer;
+      }
+    })
+  </script>
 </html>
